@@ -11,4 +11,4 @@
   -p int
         port (default 8080)
 ```
-* open web browser input address http://127.0.0.1:8080/etcdkeeper
+* Open your browser and enter the address. http://127.0.0.1:8080/etcdkeeper

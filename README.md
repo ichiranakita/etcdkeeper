@@ -1,2 +1,3 @@
 # etcdkeeper
-etcd web client
+* Lightweight etcd web client
+* Based easyui framework to achieve

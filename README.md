@@ -7,7 +7,7 @@
 ```
   Usage of httpserver.exe:  
   -h string  
-        host name or ip address (default "127.0.0.1")
+        host name or ip address (default "127.0.0.1", your machine addreess, not etcd address)
   -p int
         port (default 8080)
 ```

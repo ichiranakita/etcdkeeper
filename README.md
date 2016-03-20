@@ -3,7 +3,7 @@
 * Based easyui framework to achieve.(easyui license [easyui website](www.jeasyui.com))
 
 ## usage
-* run httpserver.exe  
+* Run httpserver.exe  
 ```
   Usage of httpserver.exe:  
   -h string  

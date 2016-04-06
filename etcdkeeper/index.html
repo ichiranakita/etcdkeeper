@@ -269,57 +269,62 @@
 					dataType: "text",
 					success: function(data) {
 						$('#cnode').window('close');
-						alertMessage('Create success.');
-						var newData = [];
-						var preObj = {};
-						var prePath = node.path;
-						for (var k in pathArr) {
-							var obj = {};
-							if (k == pathArr.length - 1) {
-								obj = {
-									id  :    getId(),
-									text:    pathArr[k],
-									state:   $('#dir').combobox('getValue') == 'true'?'closed':'',
-									dir:     $('#dir').combobox('getValue') == 'true'?true:false,
-									iconCls: $('#dir').combobox('getValue') == 'true'?"icon-dir":"icon-text",
-									path:    (prePath=="/"?(prePath + ""):(prePath + "/")) + pathArr[k],
-									children:[]
-								};
-							}else {
-								obj = {
-									id  :    getId(),
-									text:    pathArr[k],
-									state:   'closed',
-									dir:     true,
-									iconCls: "icon-dir",
-									path:    (prePath=="/"?(prePath + ""):(prePath + "/")) + pathArr[k],
-									children:[]
-								};
+						var ret = $.evalJSON(data);
+						if (ret.errorCode) {
+							$.messager.alert('Error', ret.cause + " " + ret.message, 'error');
+						}else {
+							alertMessage('Create success.');
+							var newData = [];
+							var preObj = {};
+							var prePath = node.path;
+							for (var k in pathArr) {
+								var obj = {};
+								if (k == pathArr.length - 1) {
+									obj = {
+										id  :    getId(),
+										text:    pathArr[k],
+										state:   $('#dir').combobox('getValue') == 'true'?'closed':'',
+										dir:     $('#dir').combobox('getValue') == 'true'?true:false,
+										iconCls: $('#dir').combobox('getValue') == 'true'?"icon-dir":"icon-text",
+										path:    (prePath=="/"?(prePath + ""):(prePath + "/")) + pathArr[k],
+										children:[]
+									};
+								}else {
+									obj = {
+										id  :    getId(),
+										text:    pathArr[k],
+										state:   'closed',
+										dir:     true,
+										iconCls: "icon-dir",
+										path:    (prePath=="/"?(prePath + ""):(prePath + "/")) + pathArr[k],
+										children:[]
+									};
+								}
+								var objNode = nodeExist(obj.path)
+								if (objNode != null) {
+									node = objNode;
+									prePath = node.path;
+									continue;
+								}
+								if (newData.length == 0) {
+									newData.push(obj);
+								}else {
+									preObj.children.push(obj);
+								}
+								preObj = obj;
+								prePath = obj.path;
 							}
-							var objNode = nodeExist(obj.path)
-							if (objNode != null) {
-								node = objNode;
-								prePath = node.path;
-								continue;
-							}
-							if (newData.length == 0) {
-								newData.push(obj);
-							}else {
-								preObj.children.push(obj);
-							}
-							preObj = obj;
-							prePath = obj.path;
+							$('#etree').tree('append', {
+								parent: node.target,
+								data: newData
+							});
 						}
-						$('#etree').tree('append', {
-							parent: node.target,
-							data: newData
-						});
 						$("#cvalue").textbox('enable','none');
 						$("#cnodeForm").form('reset');
 						$('#ttl').numberbox('setValue', '');
 					},
 					error: function(err) {
-						$.messager.alert('Error',err,'error');
+						$.messager.alert('Error', err, 'error');
 					}
 				});
 			}

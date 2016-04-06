@@ -96,8 +96,8 @@
 				//lines:true,
 				onContextMenu:showMenu
 			});
-			queryAll();
-			$("#etree").tree("loadData", tree)
+			//queryAll();
+			$("#etree").tree("loadData", tree);
 		}
 		
 		function connect(newValue, oldValue) {
@@ -267,7 +267,7 @@
 					data: {dir:$('#dir').combobox('getValue'),value:$('#cvalue').textbox().val(),ttl:$('#ttl').numberbox().val()},
 					async: true,
 					dataType: "text",
-					success: function() {
+					success: function(data) {
 						$('#cnode').window('close');
 						alertMessage('Create success.');
 						var newData = [];
@@ -296,6 +296,12 @@
 									children:[]
 								};
 							}
+							var objNode = nodeExist(obj.path)
+							if (objNode != null) {
+								node = objNode;
+								prePath = node.path;
+								continue;
+							}
 							if (newData.length == 0) {
 								newData.push(obj);
 							}else {
@@ -317,6 +323,16 @@
 					}
 				});
 			}
+		}
+		
+		function nodeExist(p) {
+			for (var i=0;i<=idCount;i++) {
+				var node = $('#etree').tree('find', i);
+				if (node != null && node.path == p) {
+					return node;
+				}
+			}
+			return null;
 		}
 		
 		function removeNode() {

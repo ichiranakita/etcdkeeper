@@ -1,5 +1,6 @@
 # etcdkeeper
 * Lightweight etcd web client.
+* support etcd 2.x
 * Based easyui framework to achieve.(easyui license [easyui website](www.jeasyui.com))
 
 ## usage

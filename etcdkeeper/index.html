@@ -190,7 +190,7 @@
 				$("#value").textbox('enable','none');
 				$.ajax({
 					type: "GET",
-					timeout: 10000,
+					timeout: 5000,
 					url:  serverBase + etcdBase + node.path,
 					data: "",
 					async: true,
@@ -224,7 +224,7 @@
 				if (node.state == 'closed' || children.length == 0) {
 					$.ajax({
 						type: "GET",
-						timeout: 10000,
+						timeout: 5000,
 						url:  serverBase + encodeURIComponent(etcdBase + node.path + "?recursive=true&sorted=true"),
 						data: "",
 						async: true,
@@ -302,7 +302,7 @@
 			if (!node.dir) {
 				$.ajax({
 					type: "PUT",
-					timeout: 10000,
+					timeout: 5000,
 					url:  serverBase + etcdBase + node.path,
 					data: {value:$('#value').textbox().val()},
 					async: true,
@@ -339,7 +339,7 @@
 				}
 				$.ajax({
 					type: "PUT",
-					timeout: 10000,
+					timeout: 5000,
 					url:  serverBase + etcdBase + nodePath + "/" + pathArr.join("/"),
 					data: {dir:$('#dir').combobox('getValue'),value:$('#cvalue').textbox().val(),ttl:$('#ttl').numberbox().val()},
 					async: true,
@@ -423,7 +423,7 @@
 				if (r){
 					$.ajax({
 						type: "DELETE",
-						timeout: 10000,
+						timeout: 5000,
 						url:  serverBase + etcdBase + node.path + "?recursive=true",
 						data: {},
 						async: true,

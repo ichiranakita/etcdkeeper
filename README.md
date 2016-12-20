@@ -14,5 +14,7 @@
 ```
 * Open your browser and enter the address. http://127.0.0.1:8080/etcdkeeper
 
+![Alt text](https://github.com/evildecay/etcdkeeper/edit/master/screenshots/ui.png)
+
 ## License
 MIT

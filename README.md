@@ -1,4 +1,4 @@
-# etcdkeeper
+## etcdkeeper
 * Lightweight etcd web client.
 * support etcd 2.x
 * Based easyui framework to achieve.(easyui license [easyui website](www.jeasyui.com))
@@ -14,5 +14,5 @@
 ```
 * Open your browser and enter the address. http://127.0.0.1:8080/etcdkeeper
 
-# License
+## License
 MIT

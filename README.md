@@ -3,7 +3,7 @@
 * support etcd 2.x
 * Based easyui framework to achieve.(easyui license [easyui website](www.jeasyui.com))
 
-## usage
+## Usage
 * Run httpserver.exe  
 ```
   Usage of httpserver.exe:  

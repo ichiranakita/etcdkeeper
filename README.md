@@ -1,9 +1,9 @@
-# etcdkeeper
+## etcdkeeper
 * Lightweight etcd web client.
 * support etcd 2.x
 * Based easyui framework to achieve.(easyui license [easyui website](www.jeasyui.com))
 
-## usage
+## Usage
 * Run httpserver.exe  
 ```
   Usage of httpserver.exe:  
@@ -13,3 +13,6 @@
         port (default 8080)
 ```
 * Open your browser and enter the address. http://127.0.0.1:8080/etcdkeeper
+
+## License
+MIT

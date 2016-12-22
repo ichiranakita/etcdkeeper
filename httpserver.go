@@ -36,7 +36,7 @@ func request(w http.ResponseWriter, r *http.Request){
 	if err := r.ParseForm(); err != nil {
 		log.Println(err.Error())
 	}
-	log.Println(r.FormValue("url"), r.Method)
+	log.Println(r.FormValue("url"), r.Method, r.PostForm.Encode())
 
 	body := strings.NewReader(r.PostForm.Encode())
 	req, err := http.NewRequest(r.Method, r.Form.Get("url"), body)
@@ -44,7 +44,7 @@ func request(w http.ResponseWriter, r *http.Request){
 		io.WriteString(w, err.Error())
 		return
 	}
-	req.Header.Set("Content-Type", "application/x-www-form-urlencoded;param=value")
+	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 	client := &http.Client{Timeout: 10*time.Second} // important!!!
 	resp, err := client.Do(req)
 	if err != nil {
